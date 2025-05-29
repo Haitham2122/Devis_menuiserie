@@ -9,14 +9,16 @@ from pdf_processor_complete import PDFProcessorComplete  # Nouveau module comple
 
 app = FastAPI(title="PDF Devis Modifier", description="Application pour modifier automatiquement les devis PDF")
 
-# Monter les répertoires statiques
-app.mount("/static", StaticFiles(directory="static"), name="static")
-app.mount("/output", StaticFiles(directory="output"), name="output")
-
 # Créer les répertoires s'ils n'existent pas
 os.makedirs("uploads", exist_ok=True)
 os.makedirs("output", exist_ok=True)
 os.makedirs("static", exist_ok=True)
+
+# Monter les répertoires statiques seulement s'ils existent
+if os.path.exists("static"):
+    app.mount("/static", StaticFiles(directory="static"), name="static")
+if os.path.exists("output"):
+    app.mount("/output", StaticFiles(directory="output"), name="output")
 
 def cleanup_old_files():
     """Nettoie les anciens fichiers temporaires"""
