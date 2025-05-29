@@ -28,6 +28,38 @@ python main.py
 
 L'application sera accessible sur : http://localhost:8000
 
+## 🌐 Déploiement
+
+### Déploiement sur Heroku
+
+1. **Créer une application Heroku** :
+   ```bash
+   heroku create votre-nom-app
+   ```
+
+2. **Déployer** :
+   ```bash
+   git push heroku main
+   ```
+
+3. **Ouvrir l'application** :
+   ```bash
+   heroku open
+   ```
+
+### Fichiers de déploiement inclus
+
+- **`Procfile`** : Configuration pour Heroku
+- **`runtime.txt`** : Version Python spécifiée
+- **`requirements.txt`** : Toutes les dépendances nécessaires
+
+### Variables d'environnement (optionnel)
+
+Pour la production, vous pouvez configurer :
+```bash
+heroku config:set ENVIRONMENT=production
+```
+
 ## 📁 Structure du projet
 
 ```
